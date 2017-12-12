@@ -2,9 +2,10 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
-    <classPathEntry location="/data/mysql-connector-java-5.1.26-bin.jar"/>
+    <classPathEntry location="/Users/zcy/.m2/repository/mysql/mysql-connector-java/5.1.27"/>
     <context id="context" targetRuntime="MyBatis3"
              defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
         <plugin type="plugins.SqlMapperOverridePlugin"/>
@@ -21,21 +22,17 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/thirdpartyjoin" userId="root"
-                        password="123456"/>
+                        connectionURL="jdbc:mysql://10.110.2.20:3306/db_settlement" userId="dev_user"
+                        password="userOF#dev0726"/>
 
-        <javaModelGenerator targetPackage="entity"
-                            targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="entity" targetProject="src/main/java"/>
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator targetPackage="mapper"
-                             targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
-
-
-        <table tableName="store_sync_record" domainObjectName="StoreSyncRecord">
+        <table tableName="city" domainObjectName="City">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="is_del" javaType="Boolean"></columnOverride>
         </table>
-
 
     </context>
 </generatorConfiguration>
